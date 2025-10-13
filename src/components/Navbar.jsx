@@ -1,30 +1,28 @@
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { navLinks } from '../../constants'
+import { ScrollTrigger } from 'gsap/all'
 
 function Navbar() {
     useGSAP(() => {
-        const navTween = gsap.timeline({
-            scrollTrigger: {
-                trigger: 'nav',
-                start: 'bottom top',
-            }
-        })
+        let lastDirection = null;
 
-        navTween.fromTo(
-            'nav',
-            {
-                y: 0,
-                backgroundColor: 'transparent'
-            },
-            {
-                y: -80,
-                duration: 1,
-                ease: 'power1.out'
+        ScrollTrigger.create({
+            start: 0,
+            end: "max",
+            onUpdate: (self) => {
+                if (self.direction !== lastDirection) {
+                    if (self.direction === 1) {
+                        gsap.to('nav', { y: -80, duration: 0.5, ease: 'power1.out' });
+                    } else if (self.direction === -1) {
+                        gsap.to('nav', { y: 0, duration: 0.5, ease: 'power1.out' });
+                    }
+                    lastDirection = self.direction;
+                }
             }
-        );
+        });
+    });
 
-    })
 
     return (
         <nav>
