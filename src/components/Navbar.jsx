@@ -13,9 +13,9 @@ function Navbar() {
             onUpdate: (self) => {
                 if (self.direction !== lastDirection) {
                     if (self.direction === 1) {
-                        gsap.to('nav', { y: -80, duration: 0.5, ease: 'power1.out' });
+                        gsap.to('.navigation-bar', { y: -80, duration: 0.5, ease: 'power1.out' });
                     } else if (self.direction === -1) {
-                        gsap.to('nav', { y: 0, duration: 0.5, ease: 'power1.out' });
+                        gsap.to('.navigation-bar', { y: 0, duration: 0.5, ease: 'power1.out' });
                     }
                     lastDirection = self.direction;
                 }
@@ -25,7 +25,7 @@ function Navbar() {
 
 
     return (
-        <nav>
+        <nav className="navigation-bar">
             <div>
                 <a href='#home' className='flex items-center gap-2'>
                     <img src='/images/logo.png' alt='logo' width="38" height="38" />
