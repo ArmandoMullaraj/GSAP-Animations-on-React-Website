@@ -13,7 +13,7 @@ function Navbar() {
             onUpdate: (self) => {
                 if (self.direction !== lastDirection) {
                     if (self.direction === 1) {
-                        gsap.to('.navigation-bar', { y: -80, duration: 0.5, ease: 'power1.out' });
+                        gsap.to('.navigation-bar', { y: -100, duration: 0.5, ease: 'power1.out' });
                     } else if (self.direction === -1) {
                         gsap.to('.navigation-bar', { y: 0, duration: 0.5, ease: 'power1.out' });
                     }
